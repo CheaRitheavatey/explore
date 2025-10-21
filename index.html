@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cambodia - Journey Through Wonder</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Discover Cambodia</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="carousel">
+        <div class="list">
+            <div class="item" data-destination="temple">
+                <model-viewer src="img/angkor_wat.glb" alt="Ancient Temples" camera-controls auto-rotate rotation-per-second="30deg"
+                    shadow-intensity="1" environment-image="neutral" class="model-3d">
+                </model-viewer>
+                <div class="intro">
+                    <div class="title">Explore Cambodia</div>
+                    <div class="topic">Ancient Temples</div>
+                    <div class="des">Journey through time at Angkor Wat and discover the magnificent temple complexes that tell stories of the ancient Khmer Empire</div>
+                    <button class="seeMore" onclick="window.location.href='temple.html'">Explore Temples &#8599;</button>
+                </div>
+            </div>
+
+            <div class="item" data-destination="city">
+                <model-viewer src="img/low-poly_city_night.glb" alt="Modern Cities" camera-controls auto-rotate rotation-per-second="30deg"
+                    shadow-intensity="1" environment-image="neutral" class="model-3d">
+                </model-viewer>
+                <div class="intro">
+                    <div class="title">Explore Cambodia</div>
+                    <div class="topic">Vibrant Cities</div>
+                    <div class="des">Experience the energy of Phnom Penh and Siem Reap where tradition meets modernity in bustling markets and riverside promenades</div>
+                    <button class="seeMore" onclick="window.location.href='city.html'">Discover Cities &#8599;</button>
+                </div>
+            </div>
+
+            <div class="item" data-destination="sea">
+                <model-viewer src="img/umanosehorseback_sea_cave.glb" alt="Coastal Paradise" camera-controls auto-rotate rotation-per-second="30deg"
+                    shadow-intensity="1" environment-image="neutral" class="model-3d">
+                </model-viewer>
+                <div class="intro">
+                    <div class="title">Explore Cambodia</div>
+                    <div class="topic">Coastal Paradise</div>
+                    <div class="des">Relax on pristine beaches of Sihanoukville and explore stunning islands with crystal-clear waters and tropical beauty</div>
+                    <button class="seeMore" onclick="window.location.href='sea.html'">Explore Coast &#8599;</button>
+                </div>
+            </div>
+
+            <div class="item" data-destination="forest">
+                <model-viewer src="img/minecraft_angkorwat_pointcloud_test.glb" alt="Jungle Adventures" camera-controls auto-rotate rotation-per-second="30deg"
+                    shadow-intensity="1" environment-image="neutral" class="model-3d">
+                </model-viewer>
+                <div class="intro">
+                    <div class="title">Explore Cambodia</div>
+                    <div class="topic">Jungle Adventures</div>
+                    <div class="des">Trek through lush rainforests and discover hidden waterfalls, exotic wildlife, and ancient ruins reclaimed by nature</div>
+                    <button class="seeMore" onclick="window.location.href='forest.html'">Venture Forest &#8599;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">
+            <button id="prev" class="prev"> &lt; </button>
+            <button id="next" class="next"> &gt; </button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
