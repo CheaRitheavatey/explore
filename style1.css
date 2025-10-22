@@ -996,3 +996,11 @@ header nav a.active::after {
         grid-template-columns: 1fr;
     }
 }
+
+#container3d {
+    position: fixed;
+    inset: 0;
+    background-color: red;
+    z-index: 100;
+    pointer-events: none;
+}
