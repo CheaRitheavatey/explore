@@ -171,7 +171,7 @@ loader.load(
   function (gltf) {
     bird = gltf.scene;
     bird.scale.set(1.5, 1.5, 1.5); // adjust scale
-    bird.position.set(2.5, 1.8, 0); // near top-right corner
+    bird.position.set(5.5, 2, 0); // near top-right corner
     bird.rotation.y = 1.5;
     scene.add(bird);
 
@@ -196,6 +196,80 @@ function animate() {
 animate();
 
 // === Resize event ===
+window.addEventListener('resize', () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+
+const sectionPositions = [
+  
+  {
+    class: 'container',
+    position: {x: 5.5, y: 2, z: 0},
+    rotation: {x: 0, y: 1.5, z: 0}
+  },
+  {
+    class: 'hero-section',
+    position: { x: 2.5, y: 2, z: 0 },
+    rotation: { x: 0, y: 2.5, z: 0 },
+  },
+  {
+    class: 'mosaic-gallery',
+    position: { x: -6, y: 1, z: 0 },
+    rotation: { x: 0, y: 4, z: 0 },
+  },
+  {
+    class: 'must-see',
+    position: { x: -1, y: -1, z: 0 },
+    rotation: { x: 0, y: 4.5, z: 0 },
+  },
+  {
+    class: 'info-section',
+    position: { x: 5, y: -1, z: 0 },
+    rotation: { x: 0, y: 2.5, z: 0 },
+  },
+  
+]
+
+function updateBirdPosition() {
+  if (!bird) return;
+
+  const sections = sectionPositions.map((s) => ({
+    el: document.querySelector(`.${s.class}`),
+    ...s,
+  }));
+
+  let activeSection = sections[0];
+
+  sections.forEach((s) => {
+    if (s.el) {
+      const rect = s.el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+        activeSection = s;
+      }
+    }
+  });
+
+  gsap.to(bird.position, {
+    x: activeSection.position.x,
+    y: activeSection.position.y,
+    z: activeSection.position.z,
+    duration: 2,
+    ease: 'power1.out',
+  });
+
+  gsap.to(bird.rotation, {
+    x: activeSection.rotation.x,
+    y: activeSection.rotation.y,
+    z: activeSection.rotation.z,
+    duration: 2,
+    ease: 'power1.out',
+  });
+}
+
+// === Event listeners ===
+window.addEventListener('scroll', updateBirdPosition);
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth / window.innerHeight;
