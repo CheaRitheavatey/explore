@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambodia Activities - Cities</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        color: #fff;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding: 20px;
+      }
+
+      .must-see {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .must-see h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 50px;
+        background: linear-gradient(90deg, #4cc9f0, #4361ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+      }
+
+      .list {
+        position: relative;
+        height: 70vh;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+      }
+
+      .item1-temple,
+      .item1-forest {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+      }
+
+      .item1-temple.active,
+      .item1-forest.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .img1 {
+        width: 50%;
+        height: 80%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .img1 ul {
+        list-style: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .img1 ul li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        animation: imageRotate 10s infinite;
+      }
+
+      .img1 ul li:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .img1 ul li:nth-child(2) {
+        animation-delay: 2.5s;
+      }
+
+      .img1 ul li:nth-child(3) {
+        animation-delay: 5s;
+      }
+
+      .img1 ul li:nth-child(4) {
+        animation-delay: 7.5s;
+      }
+
+      @keyframes imageRotate {
+        0% {
+          opacity: 0;
+          transform: scale(1.05);
+        }
+        10% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        25% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        35% {
+          opacity: 0;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.05);
+        }
+      }
+
+      .img1 ul li img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .des {
+        width: 45%;
+        padding: 20px;
+      }
+
+      .intro .title {
+        font-size: 1.2em;
+        color: #4cc9f0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .intro .topic {
+        font-size: 3.5em;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #4cc9f0, #4361ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+      }
+
+      .intro .des {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        color: #e0e0e0;
+      }
+
+      .intro .seeMore {
+        background: linear-gradient(90deg, #4361ee, #4cc9f0);
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+      }
+
+      .intro .seeMore:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(67, 97, 238, 0.6);
+      }
+
+      /* arrows */
+      .arrow {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .arrow a {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .arrow a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* dots indicator */
+      .dots {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .dots a {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        display: block;
+      }
+
+      .dots a.active {
+        background: #4cc9f0;
+        transform: scale(1.3);
+      }
+
+      /* mini dots for image slides */
+      .mini-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
+
+      .mini-dots .mini-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        animation: dotPulse 10s infinite;
+      }
+
+      .mini-dots .mini-dot:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .mini-dots .mini-dot:nth-child(2) {
+        animation-delay: 2.5s;
+      }
+
+      .mini-dots .mini-dot:nth-child(3) {
+        animation-delay: 5s;
+      }
+
+      .mini-dots .mini-dot:nth-child(4) {
+        animation-delay: 7.5s;
+      }
+
+      @keyframes dotPulse {
+        0% {
+          background: rgba(255, 255, 255, 0.5);
+          transform: scale(1);
+        }
+        10% {
+          background: #4cc9f0;
+          transform: scale(1.2);
+        }
+        25% {
+          background: #4cc9f0;
+          transform: scale(1.2);
+        }
+        35% {
+          background: rgba(255, 255, 255, 0.5);
+          transform: scale(1);
+        }
+        100% {
+          background: rgba(255, 255, 255, 0.5);
+          transform: scale(1);
+        }
+      }
+
+      /* Info Section */
+      .info-section {
+        max-width: 1200px;
+        margin: 60px auto 0;
+        padding: 40px 20px;
+      }
+
+      .info-section h2 {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #4cc9f0;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .info-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .info-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #4cc9f0;
+      }
+
+      .info-card p {
+        line-height: 1.6;
+        color: #e0e0e0;
+      }
+
+      /* Hide/show sections using :target */
+      .item1-temple,
+      .item1-forest {
+        display: none;
+      }
+
+      .item1-temple:target,
+      .item1-forest:target,
+      .item1-temple.active,
+      .item1-forest.active {
+        display: flex;
+      }
+
+      /* Responsive */
+      @media screen and (max-width: 991px) {
+        .item1-temple,
+        .item1-forest {
+          flex-direction: column;
+          padding: 0 20px;
+          justify-content: center;
+        }
+
+        .img1 {
+          width: 80%;
+          height: 50%;
+          margin-bottom: 30px;
+        }
+
+        .des {
+          width: 80%;
+          text-align: center;
+        }
+
+        .intro .topic {
+          font-size: 2.5em;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .must-see h2 {
+          font-size: 2rem;
+        }
+
+        .list {
+          height: 80vh;
+        }
+
+        .img1 {
+          width: 90%;
+          height: 45%;
+        }
+
+        .des {
+          width: 90%;
+        }
+
+        .intro .topic {
+          font-size: 2em;
+        }
+
+        .arrow {
+          bottom: 20px;
+        }
+
+        .dots {
+          bottom: 80px;
+        }
+
+        .info-section h2 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="must-see">
+      <h2>Must Do Activities in Cambodia</h2>
+
+      <div class="list">
+        <!-- Temple Activities -->
+        <div class="item1-temple active" id="temple">
+          <div class="img1">
+            <ul>
+              <li>
+                <img
+                  src="https://images.unsplash.com/photo-1589810635657-232948472d98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                  alt="Angkor Wat Temple"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://images.unsplash.com/photo-1559313321-f8133b8d13de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                  alt="Bayon Temple"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://images.unsplash.com/photo-1552465018-7a3d2998c01e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+                  alt="Ta Prohm Temple"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                  alt="Banteay Srei Temple"
+                />
+              </li>
+            </ul>
+            <!-- <div class="mini-dots">
+              <div class="mini-dot"></div>
+              <div class="mini-dot"></div>
+              <div class="mini-dot"></div>
+              <div class="mini-dot"></div>
+            </div> -->
+          </div>
+          <div class="des">
+            <div class="intro">
+              <div class="title">Explore Cambodia</div>
+              <div class="topic">Ancient Temples</div>
+              <div class="des">
+                Journey through time at Angkor Wat and discover the magnificent
+                temple complexes that tell stories of the ancient Khmer Empire.
+                Marvel at intricate carvings and stunning architecture.
+              </div>
+              <!-- <a href="temple.html" class="seeMore">
+                Explore Temples <i class="fas fa-arrow-right"></i>
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="dots">
+        <a href="#temple" class="active"></a>
+        <a href="#forest"></a>
+      </div> -->
+
+      <!-- <div class="arrow">
+        <a href="#forest" class="prev"><i class="fas fa-chevron-left"></i></a>
+        <a href="#temple" class="next"><i class="fas fa-chevron-right"></i></a>
+      </div> -->
+    </div>
+  </body>
+</html>
