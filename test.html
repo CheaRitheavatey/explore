@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Art Gallery</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        header .logo {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.7);
+        }
+
+        header nav a {
+            margin-left: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        header nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* carousel */
+        .carousel {
+            margin-top: 30px;
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel .list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .list .item {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel .list .item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .carousel .list .item .model-container {
+            width: 50%;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel .list .item model-viewer {
+            width: 100%;
+            height: 100%;
+            --progress-bar-color: transparent;
+        }
+
+        .carousel .list .item .content {
+            width: 45%;
+            padding: 20px;
+        }
+
+        .carousel .list .item .intro .title {
+            font-size: 1.2em;
+            color: #4cc9f0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .carousel .list .item .intro .topic {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+        }
+
+        .carousel .list .item .intro .des {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .carousel .list .item .intro .seeMore {
+            background: linear-gradient(90deg, #4361ee, #4cc9f0);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .carousel .list .item .intro .seeMore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.6);
+        }
+
+        .carousel .list .item .detail {
+            display: none;
+        }
+
+        /* arrows */
+        .arrow {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .arrow button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .arrow button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .arrow .back {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .arrow .back.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .arrow .back:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* dots indicator */
+        .dots {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dots .dot.active {
+            background: #4cc9f0;
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 991px) {
+            .carousel .list .item {
+                flex-direction: column;
+                padding: 0 20px;
+                justify-content: center;
+            }
+
+            .carousel .list .item .model-container {
+                width: 80%;
+                height: 50%;
+                margin-bottom: 30px;
+            }
+
+            .carousel .list .item .content {
+                width: 80%;
+                text-align: center;
+            }
+
+            .carousel .list .item .intro .topic {
+                font-size: 2.5em;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            header nav a {
+                margin: 0 10px;
+            }
+
+            .carousel {
+                height: 70vh;
+            }
+
+            .carousel .list .item .model-container {
+                width: 90%;
+                height: 45%;
+            }
+
+            .carousel .list .item .content {
+                width: 90%;
+            }
+
+            .carousel .list .item .intro .topic {
+                font-size: 2em;
+            }
+
+            .arrow {
+                bottom: 20px;
+            }
+
+            .dots {
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">3DGallery</div>
+        <nav>
+            <a href=""><i class="fas fa-home"></i> Home</a>
+            <a href=""><i class="fas fa-envelope"></i> Contact</a>
+            <a href=""><i class="fas fa-info-circle"></i> Info</a>
+        </nav>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <div class="list">
+            <div class="item active">
+                <div class="model-container">
+                    <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" alt="3D Art"
+                        camera-controls auto-rotate rotation-per-second="30deg" shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">3D Art Showcase</div>
+                        <div class="topic">Space Explorer</div>
+                        <div class="des">An astronaut floating in the vastness of space, representing human curiosity
+                            and the spirit of exploration beyond our world.</div>
+                        <button class="seeMore">Explore More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="model-container">
+                    <model-viewer src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" alt="3D Art"
+                        camera-controls auto-rotate rotation-per-second="30deg" shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Historical Figure</div>
+                        <div class="topic">Neil Armstrong</div>
+                        <div class="des">The first person to walk on the Moon during the Apollo 11 mission in 1969, a
+                            landmark achievement in human history.</div>
+                        <button class="seeMore">Explore More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="model-container">
+                    <model-viewer src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb" alt="3D Art"
+                        camera-controls auto-rotate rotation-per-second="30deg" shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Future Technology</div>
+                        <div class="topic">Expressive Robot</div>
+                        <div class="des">An advanced humanoid robot capable of expressing emotions, representing the
+                            future of AI and human-robot interaction.</div>
+                        <button class="seeMore">Explore More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="model-container">
+                    <model-viewer src="https://modelviewer.dev/shared-assets/models/DamagedHelmet.glb" alt="3D Art"
+                        camera-controls auto-rotate rotation-per-second="30deg" shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Sci-Fi Artifact</div>
+                        <div class="topic">Damaged Helmet</div>
+                        <div class="des">A battle-worn space helmet telling stories of cosmic conflicts and the
+                            resilience of explorers in hostile environments.</div>
+                        <button class="seeMore">Explore More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+
+        <div class="arrow">
+            <button id="prev" class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button id="back" class="back">Back to Gallery</button>
+            <button id="next" class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.carousel .list .item');
+            const dots = document.querySelectorAll('.dots .dot');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const backBtn = document.getElementById('back');
+
+            let currentIndex = 0;
+            const totalItems = items.length;
+
+            // Function to update carousel
+            function updateCarousel() {
+                // Remove active class from all items and dots
+                items.forEach(item => item.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add active class to current item and dot
+                items[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            }
+
+            // Next button click
+            nextBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            });
+
+            // Previous button click
+            prevBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            });
+
+            // Dot click
+            dots.forEach(dot => {
+                dot.addEventListener('click', function () {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    updateCarousel();
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    updateCarousel();
+                }
+            });
+
+            // See more button (placeholder functionality)
+            document.querySelectorAll('.seeMore').forEach(button => {
+                button.addEventListener('click', function () {
+                    alert('This would show more details about the model in a real application.');
+                    backBtn.classList.add('show');
+                });
+            });
+
+            // Back button
+            backBtn.addEventListener('click', function () {
+                this.classList.remove('show');
+            });
+
+            // Initialize carousel
+            updateCarousel();
+        });
+    </script>
+</body>
+
+</html>

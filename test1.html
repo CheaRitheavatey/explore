@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cambodia - Journey Through Wonder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        header .logo {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.7);
+        }
+
+        header nav a {
+            margin-left: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        header nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        header nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* carousel */
+        .carousel {
+            margin-top: 30px;
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel .list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .list .item {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .carousel .list .item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .carousel .list .item .image-container {
+            width: 50%;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .carousel .list .item .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel .list .item.active .image-container img {
+            transform: scale(1.05);
+        }
+
+        .carousel .list .item .content {
+            width: 45%;
+            padding: 20px;
+        }
+
+        .carousel .list .item .intro .title {
+            font-size: 1.2em;
+            color: #4cc9f0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .carousel .list .item .intro .topic {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+        }
+
+        .carousel .list .item .intro .des {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .carousel .list .item .intro .seeMore {
+            background: linear-gradient(90deg, #4361ee, #4cc9f0);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .carousel .list .item .intro .seeMore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.6);
+        }
+
+        /* arrows */
+        .arrow {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .arrow button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .arrow button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* dots indicator */
+        .dots {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dots .dot.active {
+            background: #4cc9f0;
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 991px) {
+            .carousel .list .item {
+                flex-direction: column;
+                padding: 0 20px;
+                justify-content: center;
+            }
+
+            .carousel .list .item .image-container {
+                width: 80%;
+                height: 50%;
+                margin-bottom: 30px;
+            }
+
+            .carousel .list .item .content {
+                width: 80%;
+                text-align: center;
+            }
+
+            .carousel .list .item .intro .topic {
+                font-size: 2.5em;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            header nav a {
+                margin: 0 10px;
+            }
+
+            .carousel {
+                height: 70vh;
+            }
+
+            .carousel .list .item .image-container {
+                width: 90%;
+                height: 45%;
+            }
+
+            .carousel .list .item .content {
+                width: 90%;
+            }
+
+            .carousel .list .item .intro .topic {
+                font-size: 2em;
+            }
+
+            .arrow {
+                bottom: 20px;
+            }
+
+            .dots {
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Discover Cambodia</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="carousel">
+        <div class="list">
+            <div class="item active" data-destination="temple">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1589810635657-232948472d98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="Angkor Wat Temple">
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Explore Cambodia</div>
+                        <div class="topic">Ancient Temples</div>
+                        <div class="des">Journey through time at Angkor Wat and discover the magnificent temple
+                            complexes that tell stories of the ancient Khmer Empire. Marvel at intricate carvings and
+                            stunning architecture.</div>
+                        <button class="seeMore" onclick="window.location.href='temple.html'">Explore Temples <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" data-destination="city">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1598970605070-1d4e94d4dfda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="Phnom Penh City">
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Explore Cambodia</div>
+                        <div class="topic">Vibrant Cities</div>
+                        <div class="des">Experience the energy of Phnom Penh and Siem Reap where tradition meets
+                            modernity in bustling markets, riverside promenades, and vibrant nightlife.</div>
+                        <button class="seeMore" onclick="window.location.href='city.html'">Discover Cities <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" data-destination="sea">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1552465018-7a3d2998c01e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+                        alt="Cambodian Coast">
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Explore Cambodia</div>
+                        <div class="topic">Coastal Paradise</div>
+                        <div class="des">Relax on pristine beaches of Sihanoukville and explore stunning islands with
+                            crystal-clear waters, coral reefs, and tropical beauty that rivals any paradise.</div>
+                        <button class="seeMore" onclick="window.location.href='sea.html'">Explore Coast <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" data-destination="forest">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="Cambodian Jungle">
+                </div>
+                <div class="content">
+                    <div class="intro">
+                        <div class="title">Explore Cambodia</div>
+                        <div class="topic">Jungle Adventures</div>
+                        <div class="des">Trek through lush rainforests and discover hidden waterfalls, exotic wildlife,
+                            and ancient ruins reclaimed by nature in Cambodia's wild interior.</div>
+                        <button class="seeMore" onclick="window.location.href='forest.html'">Venture Forest <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+
+        <div class="arrow">
+            <button id="prev" class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button id="next" class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.carousel .list .item');
+            const dots = document.querySelectorAll('.dots .dot');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+
+            let currentIndex = 0;
+            const totalItems = items.length;
+            let autoSlideInterval;
+
+            // Function to update carousel
+            function updateCarousel() {
+                // Remove active class from all items and dots
+                items.forEach(item => item.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add active class to current item and dot
+                items[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            }
+
+            // Next slide function
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+
+            // Previous slide function
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+
+            // Next button click
+            nextBtn.addEventListener('click', function () {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            // Previous button click
+            prevBtn.addEventListener('click', function () {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            // Dot click
+            dots.forEach(dot => {
+                dot.addEventListener('click', function () {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                    resetAutoSlide();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoSlide();
+                }
+            });
+
+            // Auto slide functionality
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Pause auto-slide on hover
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', function () {
+                clearInterval(autoSlideInterval);
+            });
+
+            carousel.addEventListener('mouseleave', function () {
+                startAutoSlide();
+            });
+
+            // Initialize carousel and start auto-slide
+            updateCarousel();
+            startAutoSlide();
+        });
+    </script>
+</body>
+
+</html>
