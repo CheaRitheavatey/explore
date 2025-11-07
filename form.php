@@ -1,4 +1,5 @@
 <?php
+include 'connection.php';
 // handle submission form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
@@ -7,7 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $route = htmlspecialchars($_POST['route']);
 
     // database logic
-
+    $sql = "insert into booking(name,email,trip_date,route) values('$name', '$email', '$date', '$route')";
+    if ($connection->query($sql) === TRUE) {
+        echo "<div>Thank you, $name. Your booking $route is successful!</div>";
+    } else {
+        echo "<div>Error: " . $connection->error . " </div>";
+    }
     echo "<div>Thank you $name. Your booking for $route route is successful! </div>";
 }
 
