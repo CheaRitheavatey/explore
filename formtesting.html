@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Discover Cambodia</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="gallery.html" class="dropbtn">Gallery</a>
+          <div class="dropdown-content">
+            <a href="city.html">City</a>
+            <a href="city.html">Forest</a>
+            <a href="city.html">Sea/Beach</a>
+            <a href="city.html">Temple</a>
+          </div>
+        </div>
+        <a href="form.php" class="active">Book Now</a>
+      </nav>
+    </header>
+    <div class="booking-form">
+      <h2>Book Your Cambodia Adventure</h2>
+      <form action="form.php" method="POST">
+        <div class="form">
+          <!-- name -->
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" required />
+          <br /><br />
+        </div>
+
+        <!-- email -->
+        <div class="form">
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required />
+          <br /><br />
+        </div>
+
+        <!-- date trip -->
+        <div class="form">
+          <label for="date">Plan your date:</label><br />
+          <input type="date" id="date" name="date" required />
+          <br /><br />
+        </div>
+
+        <div class="form">
+          <!-- route -->
+          <label for="route">Select your route:</label><br />
+          <select
+            name="route"
+            id="route"
+            require
+            onchange="document.getElementById('route-info').innerHTML = routeDescription[this.value]"
+          >
+            <option value="temple_route">Temple Route</option>
+            <option value="city_route">City Route</option>
+            <option value="beach_route">Beach Route</option>
+            <option value="forest_route">Forest Route</option>
+            <option value="full_route">Full Route</option>
+          </select>
+          <div class="route-info"></div>
+          <br />
+        </div>
+
+        <input type="submit" value="Book Now" class="submit-btn-form" />
+      </form>
+      <div class="message" id="msg"></div>
+    </div>
+
+    <script>
+      var routeDescription = {
+        temple_route:
+          "<strong>Temple Route:</strong><br>Siem Reap &rarr; Angkor Wat &rarr; Bayon Temple<br>Duration: 3 days",
+        forest_route:
+          "<strong>Forest Route:</strong><br>Phnom Kulen &rarr; Kirirom National Park &rarr; Bayon Temple<br>Duration: 2 days",
+        city_route:
+          "<strong>Temple Route:</strong><br>Phnom Penh &rarr; Local Markets &rarr; Royal Palace<br>Duration: 3 days",
+        beach_route:
+          "<strong>Beach Route:</strong><br>Sihanoukville &rarr; Koh Rong &rarr; Koh Sdach Island<br>Duration: 3 days",
+        full_route:
+          "<strong>Full Route:</strong><br>Temple + Forest + City + Sea/Beach <br>Duration: 7 days",
+      };
+    </script>
+  </body>
+</html>

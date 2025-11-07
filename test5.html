@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover Cambodia - Book Your Adventure</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1a6d38 0%, #2c9c5c 100%);
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      nav a.active {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 180px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        gap: 2rem;
+      }
+
+      .booking-form {
+        flex: 1;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .booking-form h2 {
+        color: #1a6d38;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+      }
+
+      .form {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #2c9c5c;
+        box-shadow: 0 0 0 3px rgba(44, 156, 92, 0.2);
+      }
+
+      .submit-btn-form {
+        background: linear-gradient(135deg, #1a6d38 0%, #2c9c5c 100%);
+        color: white;
+        border: none;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .submit-btn-form:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(44, 156, 92, 0.3);
+      }
+
+      .route-visualization {
+        flex: 1;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .route-visualization h3 {
+        color: #1a6d38;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+      }
+
+      .route-map {
+        flex: 1;
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 350px;
+      }
+
+      .route-path {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .location {
+        display: flex;
+        align-items: center;
+        margin: 0.8rem 0;
+        width: 100%;
+      }
+
+      .location-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #2c9c5c;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+      }
+
+      .location-info {
+        flex: 1;
+        padding: 0.8rem 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid #2c9c5c;
+      }
+
+      .location-info h4 {
+        color: #1a6d38;
+        margin-bottom: 0.3rem;
+      }
+
+      .location-info p {
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      .connector {
+        width: 2px;
+        height: 30px;
+        background: #2c9c5c;
+        margin-left: 25px;
+      }
+
+      .route-details {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #e8f5e9;
+        border-radius: 8px;
+        border-left: 4px solid #2c9c5c;
+      }
+
+      .route-details h4 {
+        color: #1a6d38;
+        margin-bottom: 0.5rem;
+      }
+
+      .message {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Discover Cambodia</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="gallery.html" class="dropbtn">Gallery</a>
+          <div class="dropdown-content">
+            <a href="city.html">City</a>
+            <a href="city.html">Forest</a>
+            <a href="city.html">Sea/Beach</a>
+            <a href="city.html">Temple</a>
+          </div>
+        </div>
+        <a href="form.php" class="active">Book Now</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="booking-form">
+        <h2>Book Your Cambodia Adventure</h2>
+        <form action="form.php" method="POST">
+          <div class="form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form">
+            <label for="date">Plan your date:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <div class="form">
+            <label for="route">Select your route:</label>
+            <select
+              name="route"
+              id="route"
+              required
+              onchange="updateRouteVisualization(this.value)"
+            >
+              <option value="temple_route">Temple Route</option>
+              <option value="city_route">City Route</option>
+              <option value="beach_route">Beach Route</option>
+              <option value="forest_route">Forest Route</option>
+              <option value="full_route">Full Route</option>
+            </select>
+          </div>
+
+          <input type="submit" value="Book Now" class="submit-btn-form" />
+        </form>
+        <div class="message" id="msg"></div>
+      </div>
+
+      <div class="route-visualization">
+        <h3>Your Adventure Route</h3>
+        <div class="route-map" id="route-map">
+          <!-- Route visualization will be inserted here by JavaScript -->
+        </div>
+        <div class="route-details" id="route-details">
+          <!-- Route details will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Route descriptions
+      const routeDescription = {
+        temple_route: {
+          name: "Temple Route",
+          description: "Explore the magnificent ancient temples of Cambodia",
+          duration: "3 days",
+          locations: [
+            {
+              name: "Siem Reap",
+              icon: "fa-city",
+              description: "Starting point for temple exploration",
+            },
+            {
+              name: "Angkor Wat",
+              icon: "fa-torii-gate",
+              description: "Largest religious monument in the world",
+            },
+            {
+              name: "Bayon Temple",
+              icon: "fa-monument",
+              description: "Famous for its smiling stone faces",
+            },
+          ],
+        },
+        forest_route: {
+          name: "Forest Route",
+          description: "Immerse yourself in Cambodia's lush natural landscapes",
+          duration: "2 days",
+          locations: [
+            {
+              name: "Phnom Kulen",
+              icon: "fa-mountain",
+              description: "Sacred mountain with waterfalls",
+            },
+            {
+              name: "Kirirom National Park",
+              icon: "fa-tree",
+              description: "Pine forest with hiking trails",
+            },
+            {
+              name: "Bayon Temple",
+              icon: "fa-monument",
+              description: "Famous for its smiling stone faces",
+            },
+          ],
+        },
+        city_route: {
+          name: "City Route",
+          description: "Experience the vibrant urban life of Cambodia",
+          duration: "3 days",
+          locations: [
+            {
+              name: "Phnom Penh",
+              icon: "fa-city",
+              description: "Capital city with rich history",
+            },
+            {
+              name: "Local Markets",
+              icon: "fa-store",
+              description: "Experience authentic Cambodian culture",
+            },
+            {
+              name: "Royal Palace",
+              icon: "fa-landmark",
+              description: "Official residence of the King",
+            },
+          ],
+        },
+        beach_route: {
+          name: "Beach Route",
+          description: "Relax on Cambodia's beautiful beaches and islands",
+          duration: "3 days",
+          locations: [
+            {
+              name: "Sihanoukville",
+              icon: "fa-umbrella-beach",
+              description: "Coastal city with beautiful beaches",
+            },
+            {
+              name: "Koh Rong",
+              icon: "fa-water",
+              description: "Tropical island paradise",
+            },
+            {
+              name: "Koh Sdach Island",
+              icon: "fa-island-tropical",
+              description: "Remote island with pristine beaches",
+            },
+          ],
+        },
+        full_route: {
+          name: "Full Route",
+          description: "Complete Cambodian experience covering all highlights",
+          duration: "7 days",
+          locations: [
+            {
+              name: "Temples",
+              icon: "fa-torii-gate",
+              description: "Ancient temple complexes",
+            },
+            {
+              name: "Forests",
+              icon: "fa-tree",
+              description: "Lush national parks",
+            },
+            {
+              name: "Cities",
+              icon: "fa-city",
+              description: "Urban cultural experiences",
+            },
+            {
+              name: "Beaches",
+              icon: "fa-umbrella-beach",
+              description: "Coastal relaxation",
+            },
+          ],
+        },
+      };
+
+      // Function to update the route visualization based on selection
+      function updateRouteVisualization(route) {
+        const routeData = routeDescription[route];
+        const routeMap = document.getElementById("route-map");
+        const routeDetails = document.getElementById("route-details");
+
+        // Clear previous content
+        routeMap.innerHTML = "";
+        routeDetails.innerHTML = "";
+
+        // Create route path
+        const routePath = document.createElement("div");
+        routePath.className = "route-path";
+
+        // Add locations to the route path
+        routeData.locations.forEach((location, index) => {
+          // Create location element
+          const locationElement = document.createElement("div");
+          locationElement.className = "location";
+
+          locationElement.innerHTML = `
+            <div class="location-icon">
+              <i class="fas ${location.icon}"></i>
+            </div>
+            <div class="location-info">
+              <h4>${location.name}</h4>
+              <p>${location.description}</p>
+            </div>
+          `;
+
+          routePath.appendChild(locationElement);
+
+          // Add connector between locations (except after the last one)
+          if (index < routeData.locations.length - 1) {
+            const connector = document.createElement("div");
+            connector.className = "connector";
+            routePath.appendChild(connector);
+          }
+        });
+
+        routeMap.appendChild(routePath);
+
+        // Update route details
+        routeDetails.innerHTML = `
+          <h4>${routeData.name}</h4>
+          <p>${routeData.description}</p>
+          <p><strong>Duration:</strong> ${routeData.duration}</p>
+        `;
+      }
+
+      // Initialize with default route
+      document.addEventListener("DOMContentLoaded", function () {
+        updateRouteVisualization("temple_route");
+      });
+    </script>
+  </body>
+</html>

@@ -4,8 +4,9 @@ $dbname = 'test';
 $username = 'root';
 $password = '';
 
-try {
-    $connection = mysqli_connect($host, $username, $password, $dbname);
-} catch (Exception $e) {
-    echo "something wrong!" . $e->getMessage();
+
+$connection = new mysqli($host, $username, $password, $dbname);
+
+if ($connection->connect_error) {
+    die("connection failed: " . $connection->connect_error);
 }
