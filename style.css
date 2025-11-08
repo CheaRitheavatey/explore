@@ -57,7 +57,7 @@ header .logo {
 
 header nav a, .seeMore, .back-button {
     margin-left: 30px;
-    padding: px 15px;
+    padding: 15px;
     border-radius: 18px;
     transition: all 0.3s ease;
 }
@@ -71,11 +71,13 @@ header nav a, .seeMore, .back-button {
     border: none;
     font-weight: 500;
     font-family: 'Poppins';
+    background: white;
 }
 
-.seemore:hover , .back-button:hover {
-    background: black;
+.seemore:hover .seemore a:hover, .back-button:hover, .back-button a:hover {
+    background: gray;
     color: white;
+
 }
 
 header nav a:hover {
@@ -634,7 +636,7 @@ header nav a.active {
     width: 500px;
     height: 300px;    
     content: '';
-    background-image: linear-gradient(70deg, #DC422A, blue);
+    background-image: linear-gradient(70deg, #054A91, #08B2E3);
     position: absolute;
     z-index: -1;
     filter: blur(150px);
@@ -650,7 +652,7 @@ header nav a.active {
     gap: 48px;
     align-items: center;
     margin-bottom: 64px;
-    padding: 48px;
+    /* padding: 48px; */
     border-radius: 24px;
     box-shadow: 0 20px 60px var(--shadow);
     /*  */
@@ -745,7 +747,7 @@ header nav a.active {
     background: white;
     padding: 48px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px var(--shadow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .info-section h2 {
@@ -1265,9 +1267,6 @@ header nav a.active {
 
 
 /* city file */
-.back-button {
-
-}
 .must-see {
     max-width: 1200px;
     margin: 0 auto;
@@ -1284,7 +1283,7 @@ header nav a.active {
 
 .lists {
     position: relative;
-    height: 70vh;
+    height: 80vh;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -1323,6 +1322,8 @@ header nav a.active {
     width: 100%;
     height: 100%;
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 .img1 ul li {
@@ -1333,24 +1334,26 @@ header nav a.active {
     height: 100%;
     opacity: 0;
     animation: imageRotate 10s infinite;
+    /* margin: 0;
+    padding: 0; */
 }
 
-.img ul li:nth-child(1) {
+.img1 ul li:nth-child(1) {
     animation-delay: 0s;
 }
-.img ul li:nth-child(2) {
+.img1 ul li:nth-child(2) {
     animation-delay: 2.5s;
 }
-.img ul li:nth-child(3) {
+.img1 ul li:nth-child(3) {
     animation-delay: 5s;
 }
-.img ul li:nth-child(4) {
+.img1 ul li:nth-child(4) {
     animation-delay: 7.5s;
 }
 
 @keyframes imageRotate {
     0% {
-        opacity: 1;
+        opacity: 0;
         transform: scale(1.05);
     }
     10% {
@@ -1375,7 +1378,9 @@ header nav a.active {
 .img1 ul li img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    /* object-position: center center; */
+    /* display: block; */
 }
 
 .desc {
@@ -1413,7 +1418,13 @@ header nav a.active {
     .img1 {
         width: 80%;
         height: 50%;
-        margin-bottom: 30px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* margin-bottom: 30px; */
     }
 
     .desc {
