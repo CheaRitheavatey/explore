@@ -313,7 +313,7 @@ header nav a.active {
     pointer-events: none;
 }
 
-.carousel.bg-city::before {
+/* .carousel.bg-city::before {
     background-image: linear-gradient(70deg, #DC422A, #4361ee);
 }
 
@@ -327,7 +327,7 @@ header nav a.active {
 
 .carousel.bg-forest::before {
     background-image: linear-gradient(70deg, #a3e635, #016935);
-}
+} */
 
 
 /* arrow */
@@ -745,6 +745,21 @@ header nav a.active {
     height: 300px;    
     content: '';
     background-image: linear-gradient(70deg, #054A91, #08B2E3);
+    position: absolute;
+    z-index: -1;
+    filter: blur(150px);
+    top: 23%;
+    left: 23%;
+    /* transform: translate(-10%, -50%);
+    transition: 1s; */
+}
+/* city */
+.container-city::before {
+
+    width: 500px;
+    height: 300px;    
+    content: '';
+    background-image: linear-gradient(70deg, blue, gold);
     position: absolute;
     z-index: -1;
     filter: blur(150px);
