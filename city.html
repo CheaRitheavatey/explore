@@ -10,13 +10,23 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">Discover Cambodia</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+      <header>
+      <div class="logo">Discover Cambodia</div>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="gallery.html" class="dropbtn">Gallery</a>
+          <div class="dropdown-content">
+            <a href="temple.html">Temple</a>
+            <a href="city.html">City</a>
+            <a href="beach.html">Sea/Beach</a>
+            <a href="forest.html">Forest</a>
+          </div>
+        </div>
+        <a href="form.php">Book Now</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </header>
 
     
@@ -187,9 +197,9 @@
                             <div class="desc">Journey through time at Angkor Wat and discover the magnificent
                 temple complexes that tell stories of the ancient Khmer Empire.
                 Marvel at intricate carvings and stunning architecture.</div>
-                            <div class="book-btn">
-                                <button><a href="form.php">Book Your Trip Now!</a></button>
-                            </div>
+                            <button class="seemore">
+              <a href="form.php">Book Trip Now!</a>
+            </button>
                         </div>
                     </div>
                 </div>

@@ -54,3 +54,4 @@ let nextButton = document.getElementById("next");
           carousel.classList.remove("showDetail");
         }
       });
+
