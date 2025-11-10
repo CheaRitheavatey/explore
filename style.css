@@ -768,6 +768,20 @@ header nav a.active {
     /* transform: translate(-10%, -50%);
     transition: 1s; */
 }
+.container-forest::before {
+
+    width: 500px;
+    height: 300px;    
+    content: '';
+    background-image: linear-gradient(70deg, green, gold);
+    position: absolute;
+    z-index: -1;
+    filter: blur(150px);
+    top: 23%;
+    left: 23%;
+    /* transform: translate(-10%, -50%);
+    transition: 1s; */
+}
 .hero-section {
     z-index: 100;
     display: grid;
