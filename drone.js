@@ -30,9 +30,10 @@ loader.load(
   'img/animated_drone.glb',
   function (gltf) {
     bird = gltf.scene;
-    bird.scale.set(1.5, 1.5, 1.5); // adjust scale
+    bird.scale.set(2, 2, 2); // adjust scale
     bird.position.set(5.5, 2, 0); // near top-right corner
-    bird.rotation.y = 1.5;
+    bird.rotation.y = 2;
+    bird.rotation.z = 1;
     scene.add(bird);
 
     if (gltf.animations && gltf.animations.length > 0) {
@@ -67,7 +68,7 @@ const sectionPositions = [
   {
     class: 'container',
     position: {x: 5.5, y: 2, z: 0},
-    rotation: {x: 0, y: 1.5, z: 0}
+    rotation: {x: 0, y: 2, z: 1}
   },
   {
     class: 'hero-section',
@@ -77,12 +78,12 @@ const sectionPositions = [
   {
     class: 'mosaic-gallery',
     position: { x: -6, y: 1, z: 0 },
-    rotation: { x: 0, y: 4, z: 0 },
+    rotation: { x: 0, y: 4, z: 1 },
   },
   {
     class: 'must-see',
     position: { x: -1, y: -1, z: 0 },
-    rotation: { x: 0, y: 4.5, z: 0 },
+    rotation: { x: 0, y: 4.5, z: -1 },
   },
   {
     class: 'info-section',

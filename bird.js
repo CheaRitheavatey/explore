@@ -65,14 +65,14 @@ window.addEventListener('resize', () => {
 const sectionPositions = [
   
   {
-    class: 'container',
+    class: 'container-city',
     position: {x: 5.5, y: 2, z: 0},
     rotation: {x: 0, y: 1.5, z: 0}
   },
   {
     class: 'hero-section',
     position: { x: 2.5, y: 2, z: 0 },
-    rotation: { x: 0, y: 2.5, z: 0 },
+    rotation: { x: 0, y: 2.5, z: 1 },
   },
   {
     class: 'mosaic-gallery',
@@ -82,7 +82,7 @@ const sectionPositions = [
   {
     class: 'must-see',
     position: { x: -1, y: -1, z: 0 },
-    rotation: { x: 0, y: 4.5, z: 0 },
+    rotation: { x: 0, y: 4.5, z: 1 },
   },
   {
     class: 'info-section',

@@ -27,12 +27,12 @@ let bird, mixer;
 const loader = new GLTFLoader();
 
 loader.load(
-  'img/animated_butterfly.glb',
+  'img/model_50a_-_hawksbill_sea_turtle.glb',
   function (gltf) {
     bird = gltf.scene;
-    bird.scale.set(0.3, 0.3, 0.3); // adjust scale
+    bird.scale.set(1.5, 1.5, 1.5); // adjust scale
     bird.position.set(5.5, 2, 0); // near top-right corner
-    bird.rotation.y = -2;
+    bird.rotation.y = 1.5;
     scene.add(bird);
 
     if (gltf.animations && gltf.animations.length > 0) {
@@ -65,14 +65,14 @@ window.addEventListener('resize', () => {
 const sectionPositions = [
   
   {
-    class: 'container-temple',
+    class: 'container-beach',
     position: {x: 5.5, y: 2, z: 0},
-    rotation: {x: 0, y: -2, z: 0}
+    rotation: {x: 0, y: 1.5, z: 0}
   },
   {
     class: 'hero-section',
     position: { x: 2.5, y: 2, z: 0 },
-    rotation: { x: 0, y: -2.5, z: 0 },
+    rotation: { x: 0, y: 2.5, z: 1 },
   },
   {
     class: 'mosaic-gallery',
@@ -82,7 +82,7 @@ const sectionPositions = [
   {
     class: 'must-see',
     position: { x: -1, y: -1, z: 0 },
-    rotation: { x: 0, y: 4.5, z: 0 },
+    rotation: { x: 0, y: 4.5, z: 1 },
   },
   {
     class: 'info-section',
