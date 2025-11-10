@@ -30,7 +30,7 @@ loader.load(
   'img/animated_butterfly.glb',
   function (gltf) {
     bird = gltf.scene;
-    bird.scale.set(1.5, 1.5, 1.5); // adjust scale
+    bird.scale.set(1, 1, 1); // adjust scale
     bird.position.set(5.5, 2, 0); // near top-right corner
     bird.rotation.y = 1.5;
     scene.add(bird);
