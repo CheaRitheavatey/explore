@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <div class="dropdown">
-                <a href="gallery.html" class="dropbtn">Gallery</a>
+                <a href="#" class="dropbtn">Gallery</a>
                 <div class="dropdown-content">
                     <a href="city.html">City</a>
                     <a href="city.html">Forest</a>
