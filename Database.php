@@ -10,9 +10,13 @@ class Database
     public $connection;
     public function connect()
     {
-        $this->connection = null;
         try {
-            $this->connection = new mysqli($host, $username, $password, $dbname);
+            $this->connection = new mysqli(
+                $this->host,
+                $this->username,
+                $this->password,
+                $this->dbname
+            );
         } catch (Exception $e) {
             echo "Connection error" . $e->getMessage();
         }
