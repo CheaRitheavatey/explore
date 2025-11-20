@@ -1,5 +1,5 @@
 <?php
-include "view/template/header.php"
+// include "view/template/header.php"
 ?>
 
 <h2>Booking Successful!</h2>

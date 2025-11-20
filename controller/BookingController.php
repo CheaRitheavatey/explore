@@ -4,7 +4,7 @@ class BookingController
     public function submitForm()
     {
         // need database and booking
-        require_once "config/Database.php";
+        require_once "model/Database.php";
         require_once "model/Booking.php";
 
         $database = new Database();
