@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discover Cambodia - Journey Through Wonder</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -15,18 +15,18 @@
     <header>
       <div class="logo">Discover Cambodia</div>
       <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
+        <a href="../view/index.html" class="active">Home</a>
+        <a href="../view/about.html">About</a>
         <div class="dropdown">
           <a href="#" class="dropbtn">Gallery</a>
           <div class="dropdown-content">
-            <a href="temple.html">Temple</a>
-            <a href="city.html">City</a>
-            <a href="beach.html">Sea/Beach</a>
-            <a href="forest.html">Forest</a>
+            <a href="../view/category/temple.html">Temple</a>
+            <a href="../view/category/city.html">City</a>
+            <a href="../view/category/beach.html">Sea/Beach</a>
+            <a href="../view/category/forest.html">Forest</a>
           </div>
         </div>
-        <a href="form.php">Book Now</a>
+        <a href="../view/booking/form.php">Book Now</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
@@ -35,7 +35,7 @@
       <div class="list">
         <div class="item" id="city" data-destination="city">
           <model-viewer
-            src="img/low-poly_city_night.glb"
+            src="../img/low-poly_city_night.glb"
             alt="Ancient Temples"
             camera-controls
             auto-rotate
@@ -54,17 +54,17 @@
               promenades
             </div>
             <button class="seemore">
-              <a href="city.html">See Gallery &#8599;</a>
+              <a href="../view/category/city.html">See Gallery &#8599;</a>
             </button>
             <button class="seemore">
-              <a href="form.php">Book Trip Now!</a>
+              <a href="../view/booking/form.php">Book Trip Now!</a>
             </button>
           </div>
         </div>
 
         <div class="item" id="temple" data-destination="temple">
           <model-viewer
-            src="img/angkor_wat.glb"
+            src="../img/angkor_wat.glb"
             alt="Modern Cities"
             camera-controls
             auto-rotate
@@ -83,17 +83,17 @@
               Khmer Empire
             </div>
             <button class="seemore">
-              <a href="temple.html">See Gallery &#8599;</a>
+              <a href="../view/category/temple.html">See Gallery &#8599;</a>
             </button>
             <button class="seemore">
-              <a href="form.php">Book Trip Now!</a>
+              <a href="../view/booking/form.php">Book Trip Now!</a>
             </button>
           </div>
         </div>
 
         <div class="item" data-destination="sea">
           <model-viewer
-            src="img/umanosehorseback_sea_cave.glb"
+            src="../img/umanosehorseback_sea_cave.glb"
             alt="Coastal Paradise"
             camera-controls
             auto-rotate
@@ -111,17 +111,17 @@
               islands with crystal-clear waters and tropical beauty
             </div>
             <button class="seemore">
-              <a href="beach.html">See Gallery &#8599;</a>
+              <a href="../view/category/beach.html">See Gallery &#8599;</a>
             </button>
             <button class="seemore">
-              <a href="form.php">Book Trip Now!</a>
+              <a href="../view/booking/form.php">Book Trip Now!</a>
             </button>
           </div>
         </div>
 
         <div class="item" data-destination="forest">
           <model-viewer
-            src="img/minecraft_angkorwat_pointcloud_test.glb"
+            src="../img/minecraft_angkorwat_pointcloud_test.glb"
             alt="Jungle Adventures"
             camera-controls
             auto-rotate
@@ -140,10 +140,10 @@
               reclaimed by nature
             </div>
             <button class="seemore">
-              <a href="forest.html">See Gallery &#8599;</a>
+              <a href="../view/category/forest.html">See Gallery &#8599;</a>
             </button>
             <button class="seemore">
-              <a href="form.php">Book Trip Now!</a>
+              <a href="../view/booking/form.php">Book Trip Now!</a>
             </button>
           </div>
         </div>
@@ -154,6 +154,6 @@
         <button id="next" class="next">&gt;</button>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script src="../public/js/main.js"></script>
   </body>
 </html>

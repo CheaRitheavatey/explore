@@ -27,7 +27,7 @@ let bird, mixer;
 const loader = new GLTFLoader();
 
 loader.load(
-  'img/flying_bird.glb',
+  '../../img/model_50a_-_hawksbill_sea_turtle.glb',
   function (gltf) {
     bird = gltf.scene;
     bird.scale.set(1.5, 1.5, 1.5); // adjust scale
@@ -65,7 +65,7 @@ window.addEventListener('resize', () => {
 const sectionPositions = [
   
   {
-    class: 'container-city',
+    class: 'container-beach',
     position: {x: 5.5, y: 2, z: 0},
     rotation: {x: 0, y: 1.5, z: 0}
   },

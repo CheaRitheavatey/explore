@@ -27,7 +27,7 @@ let bird, mixer;
 const loader = new GLTFLoader();
 
 loader.load(
-  'img/animated_drone.glb',
+  '../../img/animated_drone.glb',
   function (gltf) {
     bird = gltf.scene;
     bird.scale.set(2, 2, 2); // adjust scale

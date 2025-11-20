@@ -1,21 +1,21 @@
 <?php
-include 'connection.php';
+// include 'view/template/header.php';
 // handle submission form
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $date = htmlspecialchars($_POST['date']);
-    $route = htmlspecialchars($_POST['route']);
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $name = htmlspecialchars($_POST['name']);
+//     $email = htmlspecialchars($_POST['email']);
+//     $date = htmlspecialchars($_POST['date']);
+//     $route = htmlspecialchars($_POST['route']);
 
-    // database logic
-    $sql = "insert into booking(name,email,trip_date,route) values('$name', '$email', '$date', '$route')";
-    if ($connection->query($sql) === TRUE) {
-        echo "<div>Thank you, $name. Your booking $route is successful!</div>";
-    } else {
-        echo "<div>Error: " . $connection->error . " </div>";
-    }
-    echo "<div>Thank you $name. Your booking for $route route is successful! </div>";
-}
+//     // database logic
+//     $sql = "insert into booking(name,email,trip_date,route) values('$name', '$email', '$date', '$route')";
+//     if ($connection->query($sql) === TRUE) {
+//         echo "<div>Thank you, $name. Your booking $route is successful!</div>";
+//     } else {
+//         echo "<div>Error: " . $connection->error . " </div>";
+//     }
+//     echo "<div>Thank you $name. Your booking for $route route is successful! </div>";
+// }
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../public/css/style.css" />
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -35,24 +35,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <header>
         <div class="logo">Discover Cambodia</div>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
             <div class="dropdown">
                 <a href="#" class="dropbtn">Gallery</a>
                 <div class="dropdown-content">
-                    <a href="city.html">City</a>
-                    <a href="city.html">Forest</a>
-                    <a href="city.html">Sea/Beach</a>
-                    <a href="city.html">Temple</a>
+                    <a href="../category/temple.html">Temple</a>
+                    <a href="../category/city.html">City</a>
+                    <a href="../category/beach.html">Sea/Beach</a>
+                    <a href="../category/forest.html">Forest</a>
                 </div>
             </div>
             <a href="form.php" class="active">Book Now</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
     <div class="container-form">
         <div class="booking-form">
             <h2>Book Your Cambodia Adventure</h2>
-            <form action="form.php" method="POST">
+            <form action="index.php?action=submit" method="POST">
                 <div class="form">
                     <!-- name -->
                     <label for="name">Name:</label>
