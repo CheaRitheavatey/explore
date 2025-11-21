@@ -807,10 +807,6 @@ header nav a.active {
     /* padding: 48px; */
     border-radius: 24px;
     box-shadow: 0 20px 60px var(--shadow);
-    /*  */
-        /* transform: translate(-10%, -50%);
-        transition: 1s; */
-        
         
 }
 
@@ -946,24 +942,32 @@ header nav a.active {
     padding-bottom: 64px;
 }
 
-.about-hero,
-.contact-hero {
-    text-align: center;
-    padding: 80px 0;
-    /* background: linear-gradient(70deg, #DC422A, blue);     */
-    border-radius: 24px;
-    margin-bottom: 64px;
+
+.about-hero::before{
+    width: 500px;
+    height: 300px;
+    content: '';
+    background-image: linear-gradient(70deg, #054A91, #08B2E3);
+    position: absolute;
+    z-index: -1;
+    filter: blur(150px);
+    top: 23%;
+    left: 23%;
+    
 }
 
 .about-hero h1,
 .contact-hero h1 {
     font-size: 4em;
-    margin-bottom: 16px;
+    margin-bottom: 0;
+    margin-top: 8%;
+    text-align: center;
 }
 
 .subtitle {
     font-size: 1.5em;
     opacity: 0.9;
+    text-align: center;
 }
 
 .about-content {
@@ -980,7 +984,7 @@ header nav a.active {
     background: white;
     padding: 48px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px var(--shadow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-section.reverse {
@@ -1045,11 +1049,12 @@ header nav a.active {
 }
 
 .why-visit {
-    background: white;
+    max-width: 1100px;
+    margin: 64px auto;
+    background: #fff;
     padding: 64px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px var(--shadow);
-    margin: 64px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .why-visit h2 {
@@ -1061,12 +1066,13 @@ header nav a.active {
 
 .reasons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 340px);
+    justify-content: center;
     gap: 32px;
 }
 
 .reason-card {
-    background: var(--bg-light);
+    /* background: var(--bg-light); */
     padding: 32px;
     border-radius: 16px;
     text-align: center;
@@ -1461,8 +1467,14 @@ header nav a.active {
 }
 
 .img1 {
-    width: 50%;
-    height: 80%;
+    width: 100%;
+    height: 400px;
+    /* background-size: cover; */
+    /* background-position: center; */
+    border-radius: 16px;
+
+    /* width: 50%; */
+    /* height: 80%; */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
