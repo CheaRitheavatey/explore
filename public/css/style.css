@@ -942,6 +942,66 @@ header nav a.active {
     padding-bottom: 64px;
 }
 
+.contact-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+.contact-hero a {
+    color: #4cc9f0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.infos {
+    max-width: 1140px;
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.infos h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.infos p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.infos ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.infos li {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 4px solid black;
+    transition: all 0.3s ease;
+}
+
+.infos li:hover {
+    background: lightgray;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.infos strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
 
 .about-hero::before{
     width: 500px;
@@ -956,13 +1016,13 @@ header nav a.active {
     
 }
 
-.about-hero h1,
-.contact-hero h1 {
+.about-hero h1 {
     font-size: 4em;
     margin-bottom: 0;
     margin-top: 8%;
     text-align: center;
 }
+
 
 .subtitle {
     font-size: 1.5em;
@@ -1365,8 +1425,7 @@ header nav a.active {
         grid-template-columns: 1fr;
     }
 
-    .about-hero h1,
-    .contact-hero h1 {
+    .about-hero h1{
         font-size: 2.5em;
     }
 
@@ -1389,6 +1448,66 @@ header nav a.active {
     }
 }
 
+.contact-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+.info {
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    margin-bottom: 30px;
+}
+    
+.info h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+    
+        .info p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+    
+        .info ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+    
+        .info li {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+    
+        .info li:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+    
+        .info strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
 @media screen and (max-width: 480px) {
     .carousel .list .item .intro .topic {
         font-size: 1.5em;
@@ -1398,8 +1517,7 @@ header nav a.active {
         font-size: 0.9em;
     }
 
-    .about-hero h1,
-    .contact-hero h1 {
+    .about-hero h1 {
         font-size: 2em;
     }
 
@@ -1650,7 +1768,6 @@ header nav a.active {
 }
 
 .booking-form h2 {
-    color: #1a6d38;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     border-bottom: 2px solid #e9ecef;
@@ -1679,18 +1796,18 @@ input,select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #2c9c5c;
-    box-shadow: 0 0 0 3px rgba(44, 156, 92, 0.2);
+    /* border-color: #2c9c5c; */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 .submit-btn-form {
-    background: linear-gradient(135deg, #1a6d38 0%, #2c9c5c 100%);
+    background: black;
     color: white;
     border: none;
     padding: 14px 20px;
     font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 24px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
@@ -1698,7 +1815,7 @@ input:focus, select:focus {
 }
 
 .submit-btn-form:hover {
-    transform: translateY(-2px);
+    background: linear-gradient(110deg, #4361ee 0%, #4cc9f0 100%);    transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(44, 156, 92, 0.3);
 }
 
@@ -1713,7 +1830,6 @@ input:focus, select:focus {
 }
 
 .route-visualization h3 {
-    color: #1a6d38;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     border-bottom: 2px solid #e9ecef;
@@ -1751,7 +1867,7 @@ input:focus, select:focus {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #2c9c5c;
+    background: black;
     color: white;
     display: flex;
     justify-content: center;
@@ -1767,11 +1883,11 @@ input:focus, select:focus {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid #2c9c5c;
+    border-left: 4px solid black;
 }
 
 .location-info h4 {
-    color: #1a6d38;
+    color: black;
     margin-bottom: 0.3rem;
 }
 
@@ -1783,7 +1899,7 @@ input:focus, select:focus {
 .connector {
     width: 2px;
     height: 30px;
-    background: #2c9c5c;
+    /* background: #2c9c5c; */
     margin-left: 25px;
 }
 
@@ -1792,11 +1908,10 @@ input:focus, select:focus {
     padding: 1rem;
     background: #e8f5e9;
     border-radius: 8px;
-    border-left: 4px solid #2c9c5c;
+    border-left: 4px solid black;
 }
 
 .route-details h4 {
-    color: #1a6d38;
     margin-bottom: 0.5rem;
 }
 
