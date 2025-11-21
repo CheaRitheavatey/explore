@@ -1,27 +1,33 @@
 <?php
+require_once "../../model/Booking.php";
+
 class BookingController
 {
+    private $connection;
+
+    public function __construct($connection)
+    {
+        $this->connection = $connection;
+    }
+
     public function submitForm()
     {
-        // need database and booking
-        require_once "model/Database.php";
-        require_once "model/Booking.php";
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $trip_date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
+        $route = filter_input(INPUT_POST, 'route', FILTER_SANITIZE_STRING);
 
-        $database = new Database();
-        $db = $database->connect();
-
-        $booking = new Booking($db);
-
-        // assign value
-        $booking->name = $_POST['name'];
-        $booking->email = $_POST['email'];
-        $booking->trip_date = $_POST['date'];
-        $booking->route = $_POST['route'];
+        $booking = new Booking($this->connection);
+        $booking->name = $name;
+        $booking->email = $email;
+        $booking->trip_date = $trip_date;
+        $booking->route = $route;
 
         if ($booking->create()) {
-            include "view/booking/success.php";
+            // Success, redirect or show message
+            echo "<div>Thank you, $name. Your booking for $route is successful!</div>";
         } else {
-            echo "<h3>Error, cannot save booking</h3>";
+            echo "<div>Error occurred during booking.</div>";
         }
     }
 }
