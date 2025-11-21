@@ -54,7 +54,7 @@
     <div class="container-form">
         <div class="booking-form">
             <h2>Book Your Cambodia Adventure</h2>
-            <form action="../index.php?action=submit" method="POST">
+            <form action="index.php?action=submit" method="POST">
                 <div class="form">
                     <!-- name -->
                     <label for="name">Name:</label>
