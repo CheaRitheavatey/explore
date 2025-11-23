@@ -11,5 +11,5 @@ $action = $_GET['action'] ?? 'form';
 if ($action === 'submit') {
     $controller->submitForm();
 } else {
-    include "view/booking/form.php";
+    include "form.php";
 }
