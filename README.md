@@ -5,7 +5,6 @@ This project is a web-based platform that aims to showcase Cambodia’s travel d
 ## Project Demo:
 
 All of the source code can be viewed here: [HERE](https://github.com/CheaRitheavatey/explore)
-Download Zip: [HERE](../explore.zip)
 
 ---
 
