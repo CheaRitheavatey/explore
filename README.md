@@ -4,6 +4,7 @@ This project is a web-based platform that aims to showcase Cambodia’s travel d
 
 ## Project Demo:
 
+Website Link: [HERE](https://explore-cambodia.netlify.app/)
 All of the source code can be viewed here: [HERE](https://github.com/CheaRitheavatey/explore)
 
 ---
@@ -35,7 +36,7 @@ PHP form: using mysqli, and connecting to the database by user input name, email
 
 MYSQL integration: there is a table named ‘booking’ that stores all the booking details that the user inputs with a timestamp.
 
-> ![alt text](<img/diagram/Screenshot%20(168).png>)
+> ![alt text](<diagram/Screenshot%20(168).png>)
 
 MVC Structure: organizes code to improve scalability, and easy to read, understand, and maintain
 
@@ -71,43 +72,43 @@ Below are the wireframes and the brainstorming before actually doing the HTML an
 
 Home page
 
-> ![alt text](<img/diagram/brainstorm (1).png>)
+> ![alt text](<diagram/brainstorm (1).png>)
 
 Gallery page (temple, forest, city, beach)
 
-> ![alt text](<img/diagram/brainstorm (2).png>)
+> ![alt text](<diagram/brainstorm (2).png>)
 
 About page
 
-> ![alt text](<img/diagram/brainstorm (3).png>)
+> ![alt text](<diagram/brainstorm (3).png>)
 
 PHP form submission
 
-> ![alt text](<img/diagram/brainstorm (4).png>)
+> ![alt text](<diagram/brainstorm (4).png>)
 
 For navigation bar
 
-> ![alt text](<img/diagram/brainstorm (5).png>)
+> ![alt text](<diagram/brainstorm (5).png>)
 
 For the main file (index.html)
 
-> ![alt text](<img/diagram/brainstorm (6).png>)
+> ![alt text](<diagram/brainstorm (6).png>)
 
 For categories file (forest, beach, temple, city)
 
-> ![alt text](<img/diagram/brainstorm (7).png>)
+> ![alt text](<diagram/brainstorm (7).png>)
 
-> ![alt text](<img/diagram/brainstorm (8).png>)
+> ![alt text](<diagram/brainstorm (8).png>)
 > For the form submission page
-> ![alt text](<img/diagram/brainstorm (12).png>)
+> ![alt text](<diagram/brainstorm (12).png>)
 
 For the about page
 
-> ![alt text](<img/diagram/brainstorm (9).png>)
+> ![alt text](<diagram/brainstorm (9).png>)
 
-> ![alt text](<img/diagram/brainstorm (11).png>)
+> ![alt text](<diagram/brainstorm (11).png>)
 
-> ![alt text](<img/diagram/brainstorm (10).png>)
+> ![alt text](<diagram/brainstorm (10).png>)
 
 ---
 
@@ -158,10 +159,24 @@ The project aims to show Cambodia’s travel destination while combining a mixtu
 
 For self learning (JavaScript, 3d modeling)
 https://www.w3schools.com/js/
-https://sketchfab.com/search?type=models
+
+3d modeling that I am using in this project:
+https://sketchfab.com/3d-models/angkor-wat-be70b89f9c264fc19d63dca2ae78b224
+https://sketchfab.com/3d-models/umanosehorseback-sea-cave-955ca0d3f21547198f44deb4363a830a
+https://sketchfab.com/3d-models/minecraft-angkorwat-pointcloud-test-1af10bee0d374242a7bd29eb307c4d2c
+https://sketchfab.com/3d-models/low-poly-city-night-885d8034bc02407fb48cf7f0dfe61d67
+
+https://sketchfab.com/3d-models/flying-bird-eb843194e06d429ebef7dd4aa7e265c1
+https://sketchfab.com/3d-models/animated-butterfly-d4fbcbaab845402999f30c5aa75851e6
+https://sketchfab.com/3d-models/animated-drone-with-camera-free-a8e2c50f69264e75bb6277779fb5028b
+https://sketchfab.com/3d-models/model-50a-hawksbill-sea-turtle-e69458ef8176402d919df421e444da86
+
+Thank you for the inspiration and I am learning from: https://www.lundevweb.com/2023/11/slider-carousel-style-aerphone-using.html
 
 This project uses several images sourced from TikTok creators for educational purposes only.
 All images remain the property of their respective content owners.
+
+Thank you to all the TikTok creators for sharing their content publicly.
 
 Each image includes a reference link to the original TikTok post.
 The images are used solely as part of a school project to demonstrate web development (PHP, MySQL, HTML, CSS, and JavaScript).
